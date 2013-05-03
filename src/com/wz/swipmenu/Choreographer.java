@@ -21,19 +21,14 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-@SuppressLint("NewApi")
 /* package */ class Choreographer implements Animator.AnimatorListener {
     // should group this into a multi-property animation
     private static final int OPEN_DURATION = 136;
     private static final int CLOSE_DURATION = 250;
     private static final int SCRIM_DURATION = 400;
-    private static final String TAG = RecentsPanelView.TAG;
-    private static final boolean DEBUG = true;
-
     boolean mVisible;
     int mPanelHeight;
     View mRootView;

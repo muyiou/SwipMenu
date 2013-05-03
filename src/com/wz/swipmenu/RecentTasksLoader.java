@@ -38,6 +38,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Process;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -114,12 +115,13 @@ public class RecentTasksLoader implements View.OnTouchListener {
 
     public void setRecentsPanel(RecentsPanelView newRecentsPanel, RecentsPanelView caller) {
         // Only allow clearing mRecentsPanel if the caller is the current recentsPanel
-        if (newRecentsPanel != null || mRecentsPanel == caller) {
-            mRecentsPanel = newRecentsPanel;
-            if (mRecentsPanel != null) {
-                mNumTasksInFirstScreenful = mRecentsPanel.numItemsInOneScreenful();
-            }
-        }
+        mRecentsPanel = newRecentsPanel;
+//        if (newRecentsPanel != null || mRecentsPanel == caller) {
+//            mRecentsPanel = newRecentsPanel;
+//            if (mRecentsPanel != null) {
+//                mNumTasksInFirstScreenful = mRecentsPanel.numItemsInOneScreenful();
+//            }
+//        }
     }
 
     public Bitmap getDefaultThumbnail() {
@@ -183,8 +185,6 @@ public class RecentTasksLoader implements View.OnTouchListener {
     }
 
     void loadThumbnailAndIcon(TaskDescription td) {
-        final ActivityManager am = (ActivityManager)
-                mContext.getSystemService(Context.ACTIVITY_SERVICE);
         final PackageManager pm = mContext.getPackageManager();
         InputStream is = mContext.getResources().openRawResource(R.drawable.ic_launcher);  
 
@@ -244,19 +244,19 @@ public class RecentTasksLoader implements View.OnTouchListener {
     // tasks on touch down
     @Override
     public boolean onTouch(View v, MotionEvent ev) {
-        int action = ev.getAction() & MotionEvent.ACTION_MASK;
-        if (action == MotionEvent.ACTION_DOWN) {
-            preloadRecentTasksList();
-        } else if (action == MotionEvent.ACTION_CANCEL) {
-            cancelPreloadingRecentTasksList();
-        } else if (action == MotionEvent.ACTION_UP) {
-            // Remove the preloader if we haven't called it yet
-            mHandler.removeCallbacks(mPreloadTasksRunnable);
-            if (!v.isPressed()) {
-                cancelLoadingThumbnailsAndIcons();
-            }
-
-        }
+//        int action = ev.getAction() & MotionEvent.ACTION_MASK;
+//        if (action == MotionEvent.ACTION_DOWN) {
+//            preloadRecentTasksList();
+//        } else if (action == MotionEvent.ACTION_CANCEL) {
+//            cancelPreloadingRecentTasksList();
+//        } else if (action == MotionEvent.ACTION_UP) {
+//            // Remove the preloader if we haven't called it yet
+//            mHandler.removeCallbacks(mPreloadTasksRunnable);
+//            if (!v.isPressed()) {
+//                cancelLoadingThumbnailsAndIcons();
+//            }
+//
+//        }
         return false;
     }
 
@@ -391,6 +391,7 @@ public class RecentTasksLoader implements View.OnTouchListener {
         return null;
     }
 
+    //TODO:loadTask
     public void loadTasksInBackground() {
         loadTasksInBackground(false);
     }

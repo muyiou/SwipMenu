@@ -55,11 +55,4 @@
             android:visibility="invisible" />
     </FrameLayout>
 
-    <com.wz.swipmenu.StatusBarTouchProxy
-        android:id="@+id/status_bar_touch_proxy"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
-
 </com.wz.swipmenu.RecentsPanelView>
