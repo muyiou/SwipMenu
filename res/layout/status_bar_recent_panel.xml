@@ -18,7 +18,7 @@
 */
 -->
 
-<com.wz.newtest.RecentsPanelView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wz.swipmenu.RecentsPanelView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/recents_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true" >
 
-        <com.wz.newtest.RecentsVerticalScrollView
+        <com.wz.swipmenu.RecentsVerticalScrollView
             android:id="@+id/recents_container"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -46,7 +46,7 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
             </LinearLayout>
-        </com.wz.newtest.RecentsVerticalScrollView>
+        </com.wz.swipmenu.RecentsVerticalScrollView>
 
         <TextView
             android:id="@+id/recents_no_apps"
@@ -55,11 +55,11 @@
             android:visibility="invisible" />
     </FrameLayout>
 
-    <com.wz.newtest.StatusBarTouchProxy
+    <com.wz.swipmenu.StatusBarTouchProxy
         android:id="@+id/status_bar_touch_proxy"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true" />
 
-</com.wz.newtest.RecentsPanelView>
+</com.wz.swipmenu.RecentsPanelView>
