@@ -22,7 +22,6 @@ import android.animation.Animator;
 import android.animation.LayoutTransition;
 import android.animation.TimeInterpolator;
 import android.app.ActivityManager;
-import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
@@ -33,9 +32,7 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -321,12 +318,12 @@ public class RecentsPanelView extends FrameLayout implements
     }
 
     static void sendCloseSystemWindows(Context context, String reason) {
-        if (ActivityManagerNative.isSystemReady()) {
-            try {
-                ActivityManagerNative.getDefault().closeSystemDialogs(reason);
-            } catch (RemoteException e) {
-            }
-        }
+//        if (ActivityManagerNative.isSystemReady()) {
+//            try {
+//                ActivityManagerNative.getDefault().closeSystemDialogs(reason);
+//            } catch (RemoteException e) {
+//            }
+//        }
     }
 
     private void showImpl(boolean show) {
