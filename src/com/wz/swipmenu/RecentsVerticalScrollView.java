@@ -19,7 +19,6 @@ package com.wz.swipmenu;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import android.animation.LayoutTransition;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.database.DataSetObserver;
@@ -96,8 +95,6 @@ public class RecentsVerticalScrollView extends ScrollView implements
             addToRecycledViews(v);
             mAdapter.recycleView(v);
         }
-        LayoutTransition transitioner = getLayoutTransition();
-        setLayoutTransition(null);
 
         mLinearLayout.removeAllViews();
 
@@ -174,7 +171,6 @@ public class RecentsVerticalScrollView extends ScrollView implements
 
             mLinearLayout.addView(view);
         }
-        setLayoutTransition(transitioner);
 
         // Scroll to end after initial layout.
         final OnGlobalLayoutListener updateScroll = new OnGlobalLayoutListener() {
@@ -352,10 +348,6 @@ public class RecentsVerticalScrollView extends ScrollView implements
         // Skip this work if a transition is running; it sets the scroll values
         // independently
         // and should not have those animated values clobbered by this logic
-        LayoutTransition transition = mLinearLayout.getLayoutTransition();
-        if (transition != null && transition.isRunning()) {
-            return;
-        }
         // Keep track of the last visible item in the list so we can restore it
         // to the bottom when the orientation changes.
         mLastScrollPosition = scrollPositionOfMostRecent();
@@ -366,11 +358,11 @@ public class RecentsVerticalScrollView extends ScrollView implements
                 // Make sure we're still not clobbering the transition-set
                 // values, since this
                 // runnable launches asynchronously
-                LayoutTransition transition = mLinearLayout
-                        .getLayoutTransition();
-                if (transition == null || !transition.isRunning()) {
-                    scrollTo(0, mLastScrollPosition);
-                }
+//                LayoutTransition transition = mLinearLayout
+//                        .getLayoutTransition();
+//                if (transition == null || !transition.isRunning()) {
+//                    scrollTo(0, mLastScrollPosition);
+//                }
             }
         });
     }
@@ -407,11 +399,11 @@ public class RecentsVerticalScrollView extends ScrollView implements
         return mNumItemsInOneScreenful;
     }
 
-    @Override
-    public void setLayoutTransition(LayoutTransition transition) {
-        // The layout transition applies to our embedded LinearLayout
-        mLinearLayout.setLayoutTransition(transition);
-    }
+//    @Override
+//    public void setLayoutTransition(LayoutTransition transition) {
+//        // The layout transition applies to our embedded LinearLayout
+//        mLinearLayout.setLayoutTransition(transition);
+//    }
 
     public void setCallback(RecentsCallback callback) {
         mCallback = callback;

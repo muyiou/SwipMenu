@@ -16,7 +16,6 @@
 
 package com.wz.swipmenu;
 
-import android.animation.LayoutTransition;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
@@ -235,25 +234,25 @@ public class RecentsScrollViewPerformanceHelper {
         return mFadingEdgeLength;
     }
 
-    public void setLayoutTransitionCallback(LayoutTransition transition) {
-        if (mSoftwareRendered && OPTIMIZE_SW_RENDERED_RECENTS) {
-            if (transition != null) {
-                transition.addTransitionListener(new LayoutTransition.TransitionListener() {
-                    @Override
-                    public void startTransition(LayoutTransition transition,
-                            ViewGroup container, View view, int transitionType) {
-                        updateShowBackground();
-                    }
-
-                    @Override
-                    public void endTransition(LayoutTransition transition,
-                            ViewGroup container, View view, int transitionType) {
-                        updateShowBackground();
-                    }
-                });
-            }
-        }
-    }
+//    public void setLayoutTransitionCallback(LayoutTransition transition) {
+//        if (mSoftwareRendered && OPTIMIZE_SW_RENDERED_RECENTS) {
+//            if (transition != null) {
+//                transition.addTransitionListener(new LayoutTransition.TransitionListener() {
+//                    @Override
+//                    public void startTransition(LayoutTransition transition,
+//                            ViewGroup container, View view, int transitionType) {
+//                        updateShowBackground();
+//                    }
+//
+//                    @Override
+//                    public void endTransition(LayoutTransition transition,
+//                            ViewGroup container, View view, int transitionType) {
+//                        updateShowBackground();
+//                    }
+//                });
+//            }
+//        }
+//    }
 
     // Turn on/off drawing the background in our ancestor, and turn on/off drawing
     // in the items in LinearLayout contained by this scrollview.
@@ -265,14 +264,13 @@ public class RecentsScrollViewPerformanceHelper {
             return;
         }
         if (mSoftwareRendered && OPTIMIZE_SW_RENDERED_RECENTS) {
-            LayoutTransition transition = mLinearLayout.getLayoutTransition();
+//            LayoutTransition transition = mLinearLayout.getLayoutTransition();
             int linearLayoutSize =
                 mIsVertical ? mLinearLayout.getHeight() : mLinearLayout.getWidth();
             int scrollViewSize =
                 mIsVertical ? mScrollView.getHeight() : mScrollView.getWidth();
             boolean show = !mScrollView.isHardwareAccelerated() &&
-                (linearLayoutSize > scrollViewSize) &&
-                !(transition != null && transition.isRunning()) &&
+                (linearLayoutSize > scrollViewSize)  &&
                 mCallback.isRecentsVisible();
 
             if (!mFirstTime && show == mShowBackground) return;

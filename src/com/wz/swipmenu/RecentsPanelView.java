@@ -19,7 +19,6 @@ package com.wz.swipmenu;
 import java.util.ArrayList;
 
 import android.animation.Animator;
-import android.animation.LayoutTransition;
 import android.animation.TimeInterpolator;
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
@@ -369,13 +368,13 @@ public class RecentsPanelView extends FrameLayout implements
     }
 
     public void onAnimationEnd(Animator animation) {
-        if (mShowing) {
-            final LayoutTransition transitioner = new LayoutTransition();
-            ((ViewGroup) mRecentsContainer).setLayoutTransition(transitioner);
-            createCustomAnimations(transitioner);
-        } else {
+//        if (mShowing) {
+//            final LayoutTransition transitioner = new LayoutTransition();
+//            ((ViewGroup) mRecentsContainer).setLayoutTransition(transitioner);
+//            createCustomAnimations(transitioner);
+//        } else {
             ((ViewGroup) mRecentsContainer).setLayoutTransition(null);
-        }
+//        }
     }
 
     public void onAnimationRepeat(Animator animation) {
@@ -464,11 +463,11 @@ public class RecentsPanelView extends FrameLayout implements
         }
     }
 
-    private void createCustomAnimations(LayoutTransition transitioner) {
-        transitioner.setDuration(200);
-        transitioner.setStartDelay(LayoutTransition.CHANGE_DISAPPEARING, 0);
-        transitioner.setAnimator(LayoutTransition.DISAPPEARING, null);
-    }
+//    private void createCustomAnimations(LayoutTransition transitioner) {
+//        transitioner.setDuration(200);
+//        transitioner.setStartDelay(LayoutTransition.CHANGE_DISAPPEARING, 0);
+//        transitioner.setAnimator(LayoutTransition.DISAPPEARING, null);
+//    }
 
     private void updateIcon(ViewHolder h, Drawable icon, boolean show,
             boolean anim) {

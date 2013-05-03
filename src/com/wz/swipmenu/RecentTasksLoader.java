@@ -38,7 +38,6 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Process;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
